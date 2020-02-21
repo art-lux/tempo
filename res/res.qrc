@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>AdmiralVinogradov2009.jpg</file>
+        <file>amerigo-vespucci.jpg</file>
+    </qresource>
+</RCC>
