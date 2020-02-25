@@ -12,6 +12,7 @@ endif()
 
 set(QT_BIN_PATH /home/art/Qt5.14.0/5.14.0/gcc_64/bin/)
 set(CMAKE_PREFIX_PATH /home/art/Qt5.14.0/5.14.0/gcc_64/)
+add_compile_options(-Wall -Wextra -pedantic -Werror -std=c++14)
 
 FILE(GLOB SOURCES ./*.[ch]pp)
 MESSAGE("SOURCES = ${SOURCES}")

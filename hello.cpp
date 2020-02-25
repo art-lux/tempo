@@ -1,13 +1,23 @@
 #include <iostream>
 #include <QtWidgets>
+#include <thread>
+#include <chrono>
 #include "Counter.hpp"
+#include "Calculator.hpp"
 
+extern void start_calculator();
+extern void label_with_href();
+extern void scroll_area();
+extern void label_with_pixmap();
 
 int main(int argc, char ** argv)
 {
     QApplication app(argc, argv);
 
-#if 1   
+    start_calculator();
+
+
+#if 0   
     auto lb = new QLabel("0");
     lb->setWindowTitle("My Label");
     lb->resize (120, 33);
@@ -17,11 +27,11 @@ int main(int argc, char ** argv)
     btn->setEnabled(true);
     Counter counter;
 
-    QBoxLayout* pbxLayout = new QVBoxLayout(/*QBoxLayout::LeftToRight*/);
+    QBoxLayout* pbxLayout = new QBoxLayout(QBoxLayout::LeftToRight);
 
-    pbxLayout->addWidget(lb);
-    //pbxLayout->addStretch(2);
-    pbxLayout->addWidget(btn, 2);
+    pbxLayout->addWidget(lb, 1);
+    pbxLayout->addStretch(2);
+    pbxLayout->addWidget(btn, 3);
 
     pbxLayout->setMargin(5);
     pbxLayout->setSpacing(2);
@@ -37,20 +47,21 @@ int main(int argc, char ** argv)
 #endif
 
 #if 0
-    QScrollArea scroll;
-    QWidget* pwgt = new QWidget();
-    QPixmap pm(":/AdmiralVinogradov2009.jpg");
-
-    QPalette pal;
-    pal.setBrush(pwgt->backgroundRole(), QBrush(pm));
-    pwgt->setPalette(pal);
-    pwgt->setAutoFillBackground(true);
-    std::cout << "Width = " << pm.width() << std::endl << "Height = " <<  pm.height() << std::endl;
-    pwgt->setFixedSize(pm.width(), pm.height());
-    scroll.setWidget(pwgt);
-    scroll.resize(350, 150);
-    scroll.show();
+   
 #endif
+    //label_with_pixmap();
 
+    using namespace std::literals::chrono_literals;
+    auto label = new QLabel();   
+    auto pm_l = new QPixmap(":/amerigo-vespucci.jpg");
+    label->resize(pm_l->size());
+    label->setPixmap(*pm_l);
+    label->show();
+    std::this_thread::sleep_for(2s);
+    delete label;
+    delete pm_l;
+
+    scroll_area();
+    label_with_href();
     return app.exec();
 }
