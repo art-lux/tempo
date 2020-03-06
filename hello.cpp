@@ -9,13 +9,13 @@ extern void start_calculator();
 extern void label_with_href();
 extern void scroll_area();
 extern void label_with_pixmap();
+extern void splitter();
 
-int main(int argc, char ** argv)
+int main(int argc, char **argv)
 {
     QApplication app(argc, argv);
 
     start_calculator();
-
 
 #if 0   
     auto lb = new QLabel("0");
@@ -48,20 +48,11 @@ int main(int argc, char ** argv)
 
 #if 0
    
-#endif
-    //label_with_pixmap();
-
-    using namespace std::literals::chrono_literals;
-    auto label = new QLabel();   
-    auto pm_l = new QPixmap(":/amerigo-vespucci.jpg");
-    label->resize(pm_l->size());
-    label->setPixmap(*pm_l);
-    label->show();
-    std::this_thread::sleep_for(2s);
-    delete label;
-    delete pm_l;
-
+    label_with_pixmap();
     scroll_area();
     label_with_href();
+    splitter();
+#endif
+
     return app.exec();
 }

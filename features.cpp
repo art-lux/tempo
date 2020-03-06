@@ -46,3 +46,22 @@ void label_with_pixmap()
     label->setPixmap(*pm_l);
     label->show();
 }
+
+void splitter()
+{
+    QSplitter* spl = new QSplitter(Qt::Vertical);
+    QTextEdit *ptxtl = new QTextEdit();
+    QTextEdit *ptxt2 = new QTextEdit();
+    spl->addWidget(ptxtl);
+    spl->addWidget(ptxt2);
+    ptxtl->setPlainText("Line1\n"
+                        "Line2\n"
+                        "Line3\n"
+                        "Line4\n"
+                        "Line5\n"
+                        "Line6\n"
+                        "Line7\n");
+    ptxt2->setPlainText(ptxtl->toPlainText());
+    spl->resize(200, 220);
+    spl->show();
+}
